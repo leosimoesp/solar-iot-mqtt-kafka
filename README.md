@@ -1,14 +1,61 @@
+<<<<<<< Updated upstream
 ### Monitorando geração de energia solar com MQTT e Kafka
+=======
+## <center>Monitorando geração de energia solar com MQTT e Kafka</center>
+>>>>>>> Stashed changes
 
 
 
 ![solar_farm_iot](https://github.com/leosimoesp/solar-iot-mqtt-kafka/assets/7965954/32b042d3-d51a-45fa-badf-8ed669f3ba46)
 
+<<<<<<< Updated upstream
 
 
 ![kafka-mqtt-arch drawio](https://github.com/leosimoesp/solar-iot-mqtt-kafka/assets/7965954/e2fcad33-821a-4bb6-8c28-fe7def49c524)
 
 
+=======
+</br>
+</br>
+</br>
+
+# Introdução
+Imagine que nossa fazenda solar produz energia comercialmente e temos a necessidade de monitorar e saber o quanto de energia estamos produzindo diariamente, bem como se os sensores de IoT estão funcionando corretamente em cada planta de geração.
+O objetivo aqui é criar uma pipeline híbrida de dados para coletar os dados produzidos pelos inversores de cada placa solar e conseguir processar esses dados para monitorar a produção de energia diária dessa fazenda por planta de geração.
+
+</br>
+</br>
+</br>
+
+# Solução
+
+Em resumo a solução seria:
+
+![kafka-mqtt-arch](https://github.com/leosimoesp/solar-iot-mqtt-kafka/assets/7965954/1424a398-ba32-4824-82d4-bb540d62f0d6)
+
+### Simulador: 
+
+- Utilizando um script iremos gerar os dados simulados de sensores de plantas de energia solar enviados a cada 15 minutos. Considere que em média no ano o nascer do sol seria em torno das 06h da manhã e 18h da noite o ponte do sol. Os sensores irão enviar dados durante essa janel de tempo.
+Este simulador foi desenvolvido com Golang. Essa aplicação possui um "generator" que irá gerar valores para os sensores configurados.
+Os dados então serão enviados para um broker MQTT utilizando o cliente do pacote `paho.golang`
+
+### MQTT: 
+
+- MQTT é um protocolo de comunicação de baixa latência, com baixa complexidade e baixo consumo de banda para internet das coisas (IoT).
+O transporte das mensagens entre dispositivos remotos utilizam publish/subscribe. O cliente e o servidor(broker) se comunicam de forma assíncrona.
+Nessa simulação utlizaremos o `mosquitto` message broker que implementa o `MQTT`. </br> Maiores informações em: https://mosquitto.org
+
+### Kafka: 
+
+
+### Kafka Connect:
+
+
+### InfluxDB:
+
+
+### Grafana:
+>>>>>>> Stashed changes
 
 
 @TODO adjust readme.md
