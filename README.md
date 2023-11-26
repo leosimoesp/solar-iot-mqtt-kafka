@@ -1,4 +1,4 @@
-## <center>Monitorando geração de energia solar com MQTT e Kafka</center>
+## <p style="text-align: center;">Monitorando geração de energia solar com MQTT e Kafka</p>
 
 
 
@@ -23,7 +23,7 @@ Em resumo a solução seria:
 ### Simulador: 
 
 - Utilizando um script iremos gerar os dados simulados de sensores de plantas de energia solar enviados a cada 15 minutos. Considere que em média no ano o nascer do sol seria em torno das 06h da manhã e 18h da noite o ponte do sol. Os sensores irão enviar dados durante essa janel de tempo.
-Este simulador foi desenvolvido com Golang. Essa aplicação possui um "generator" que irá gerar valores para os sensores configurados.
+Este simulador foi desenvolvido com Golang. Essa aplicação possui um <b>"generator"</b> que irá gerar valores para os sensores configurados.
 Os dados então serão enviados para um broker MQTT utilizando o cliente do pacote `paho.golang`
 
 ### MQTT: 
