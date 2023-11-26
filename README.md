@@ -1,4 +1,4 @@
-## <p style="text-align: center;">Monitorando geração de energia solar com MQTT e Kafka</p>
+<div align="center"><h2>Monitorando geração de energia solar com MQTT e Kafka</h2></div>
 
 
 
