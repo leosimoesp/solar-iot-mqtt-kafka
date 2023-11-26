@@ -1,6 +1,12 @@
+### Monitorando geração de energia solar com MQTT e Kafka
+
+
+
 ![solar_farm_iot](https://github.com/leosimoesp/solar-iot-mqtt-kafka/assets/7965954/32b042d3-d51a-45fa-badf-8ed669f3ba46)
 
 
+
+![kafka-mqtt-arch drawio](https://github.com/leosimoesp/solar-iot-mqtt-kafka/assets/7965954/e2fcad33-821a-4bb6-8c28-fe7def49c524)
 
 
 
