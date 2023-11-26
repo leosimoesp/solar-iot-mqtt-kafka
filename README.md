@@ -1,3 +1,10 @@
+![solar_farm_iot](https://github.com/leosimoesp/solar-iot-mqtt-kafka/assets/7965954/32b042d3-d51a-45fa-badf-8ed669f3ba46)
+
+
+
+
+
+
 @TODO adjust readme.md
 
 Create user
