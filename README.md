@@ -6,13 +6,11 @@
 
 </br>
 </br>
-</br>
 
 # Introdução
 Imagine que nossa fazenda solar produz energia comercialmente e temos a necessidade de monitorar e saber o quanto de energia estamos produzindo diariamente, bem como se os sensores de IoT estão funcionando corretamente em cada planta de geração.
 O objetivo aqui é criar uma pipeline híbrida de dados para coletar os dados produzidos pelos inversores de cada placa solar e conseguir processar esses dados para monitorar a produção de energia diária dessa fazenda por planta de geração.
 
-</br>
 </br>
 </br>
 
