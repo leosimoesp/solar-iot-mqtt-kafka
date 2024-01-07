@@ -32,17 +32,100 @@ Os dados então serão enviados para um broker MQTT utilizando o cliente do paco
 O transporte das mensagens entre dispositivos remotos utilizam publish/subscribe. O cliente e o servidor(broker) se comunicam de forma assíncrona.
 Nessa simulação utlizaremos o `mosquitto` message broker que implementa o `MQTT`. </br> Maiores informações em: https://mosquitto.org
 
-### Kafka: 
+### Kafka:
 
+- Apache Kafka é uma plataforma de streaming de eventos usada para coletar, processar, armazenar e integrar dados em escala. Ela tem vários casos de uso, incluindo streaming distribuído, processamento de fluxo, integração de dados e mensageria pub/sub.
+Nessa demonstração utilizaremos um broker `kafka` para receber os dados dos sensores coletados via `MQTT` broker. 
+Mais informações em: https://kafka.apache.org
 
 ### Kafka Connect:
+
+- Kafka Connect é uma ferramenta de integração de dados que permite a criação de conexões de dados entre Kafka e outros sistemas de armazenamento de dados. Ela permite a criação de conexões customizadas para importar e exportar dados entre Kafka e outros sistemas.
+Por meio deste cnector foi possível integrar diretamente os dados do `MQTT` broker e injetá-lo diretamente no tópico kafka.
+Mais informações em: https://kafka.apache.org/documentation/#connect
+
+
+### Telegraf: 
+- Telegraf é um agente executado do lado do servidor para ajudar na coleta de métricas de seus sistemas, sensores e aplicações.
+Ele é open source e nessa simulação será utilizado para salvar os dados dos sensores coletados pelo tópico kafka e injetar
+no nosso banco de dados `InfluxDB`.
+Mais informações em: https://www.influxdata.com/time-series-platform/telegraf
 
 
 ### InfluxDB:
 
+- InfluxDB é um banco de dados de série temporal utilizado para armazenar e processar grandes quantidades de dados.
+Ele é muito utlizado em aplicações IoT, monitoramento e analytics.
+Mais informações em: https://www.influxdata.com
+
 
 ### Grafana:
 
+- Grafana nos permite termos observabilidade de nossa simulação. Podemos acompanhar pelos dashboards a quantidade de energia
+solar produzida pelos sensores das fazendas solares. A simulação está programada para gerar dados aleaórios de geração de 
+energia solar entre as 06h da manhã até as 18h da tarde. Os valores são aleatórios baseados em faixas de valores de luminosidade
+solar e eficiência considerando o hemisfério sul.
+Podemos também monitorar a ocorrência de falha nos sensores e nessa simulação, podemos passar alguns parâmetros para validarmos
+via grafana o momento de ocorrência até a solução.
+Mais informações em: https://grafana.com
+
+
+## Como executar a simulação?
+
+Requisitos:
+
+- Docker 24.0.7
+- Docker Compose version v2.21.0
+- Go 1.19+
+- Mosquitto-clients (Linux)
+
+1 - Clone o projeto no github executando: 
+
+```
+git@github.com:leosimoesp/solar-iot-mqtt-kafka.git
+```
+
+2 - Configurando o MQTT Broker
+
+Nessa simulação, utilizamos o Mosquitto como broker MQTT.
+
+No diretório `tools/mosquito/config` criar um arquivo `password.txt`
+
+Na raiz do projeto crie um arquivo `.env` com as seguintes configurações:
+
+```
+BROKER_SERVER_URL="localhost:1883"
+MQTT_TOPIC="solar-farm-sensors"
+MQTT_CLIENTID="client1"
+MQTT_PASSWORD="<PWD>"
+MQTT_USERNAME="client1"
+```
+
+*Observe que na pasta scripts tem o script `init.sh` esse script vai criar 10 users e senhas
+para serem utilizados nessa simulação. Essa abordagem é apenas para essa demonstração e não
+deve ser utilizada em produção.
+Ajuste a senha `MQTT_PASSWORD` conforme o que está no script `init.sh` e gerado durante a execução pelo makefile conforme
+a seguir.
+
+Inicialize somente o mosquito utilizando o docker compose desta forma:
+
+```
+docker compose up -d mosquitto
+```
+
+Crie um user admin via makefile: 
+
+```
+make create-user user=admin password=<YOUR_PWD>
+```
+
+Crie os users clients a serem utilizados na simulação:
+
+```
+make create-mqtt-clients
+```
+*Não esqueça de ajustar a senha gerada pelo script.sh no arquivo `.env`
+Será necessário termos esse client para publicar mensagens mqtt durante a simulação.
 
 @TODO adjust readme.md
 
